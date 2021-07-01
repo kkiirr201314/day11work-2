@@ -27,4 +27,9 @@ object Game{
         println("光環顏色:${player.auraColor()}" + "     走運嗎?${if (player.isBlessed) "是的" else "否，他很背"}")
         println("${player.name} ${player.formatHealthStatus()}")
     }
+    private class GameInput(arg: String?){
+        private val input = arg ?: ""
+        val command = input.split(" ")[0]
+        val argument = input.split(" ").getOrElse(1, {""})
+    }
 }

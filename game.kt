@@ -20,6 +20,7 @@ fun main() {
     print(className)
 
     printPlayerStatus(player)
+    Game.play()
 }
 private  fun  printPlayerStatus(player: Player){
     println("光環顏色:${player.auraColor()}" + "     走運嗎?${if (player.isBlessed) "是的" else "否，他很背"}")
@@ -28,5 +29,10 @@ private  fun  printPlayerStatus(player: Player){
 object Game{
     init{
         println("歡迎，冒險者")
+    }
+    fun play(){
+        while (true){
+
+        }
     }
 }

@@ -2,27 +2,12 @@ import java.lang.IllegalArgumentException
 
 fun main() {
 
-    println(currentRoom.description())
-    println(currentRoom.load())
-
-    val auraColor = player.auraColor()
-    player.auraColor()
-    var townSquare = TownSquare()
-    var className = when(townSquare){
-
-        is room -> "Room"
-        is TownSquare -> "TownSquare"
-        else -> throw IllegalArgumentException()
-    }
-    print(className)
-
-    printPlayerStatus(player)
     Game.play()
 }
 
 object Game{
     private val player = Player("Madrigal")
-    private var currentRoom: = TownSquare()
+    private var currentRoom: room = TownSquare()
 
     init{
         println("歡迎，冒險者")
@@ -30,7 +15,10 @@ object Game{
     }
     fun play(){
         while (true){
+            println(currentRoom.description())
+            println(currentRoom.load())
 
+            printPlayerStatus(player)
         }
     }
     private  fun  printPlayerStatus(player: Player){

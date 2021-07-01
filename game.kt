@@ -39,6 +39,8 @@ object Game{
 
         fun processCommand() = when (command.toLowerCase()){
             "move" -> move(argument)
+            "quit" -> quit(player)
+            "exit" -> quit(player)
             else -> commandNotFound()
         }
         private fun commandNotFound() = "我不太確定你想做什麼!"
@@ -57,5 +59,5 @@ object Game{
     }catch (e:Exception){
         "Invalid direction: $directionInput."
     }
-
+    private fun quit(player: Player) = "～　再見， ${player.name} ，歡迎再來玩　～ "
 }

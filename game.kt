@@ -18,14 +18,17 @@ object Game{
         println("歡迎，冒險者")
         player.castFireball()
     }
-    fun play(){
-        while (true){
+    fun play() {
+        while (true) {
             println(currentRoom.description())
             println(currentRoom.load())
 
             printPlayerStatus(player)
             print("> 輸入您的命令: ")
             println(GameInput(readLine()).processCommand())
+            if (readLine() == "quit" || readLine() == "exit") {
+                break
+            }
         }
     }
     private  fun  printPlayerStatus(player: Player){

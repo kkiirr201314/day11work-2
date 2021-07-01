@@ -38,6 +38,7 @@ object Game{
         val argument = input.split(" ").getOrElse(1, {""})
 
         fun processCommand() = when (command.toLowerCase()){
+            "move" -> move(argument)
             else -> commandNotFound()
         }
         private fun commandNotFound() = "我不太確定你想做什麼!"

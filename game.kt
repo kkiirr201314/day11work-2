@@ -1,10 +1,7 @@
 import java.lang.IllegalArgumentException
 
 fun main() {
-    val player = Player("Madrigal")
-    player.castFireball()
 
-    var currentRoom = TownSquare()
     println(currentRoom.description())
     println(currentRoom.load())
 
@@ -22,17 +19,22 @@ fun main() {
     printPlayerStatus(player)
     Game.play()
 }
-private  fun  printPlayerStatus(player: Player){
-    println("光環顏色:${player.auraColor()}" + "     走運嗎?${if (player.isBlessed) "是的" else "否，他很背"}")
-    println("${player.name} ${player.formatHealthStatus()}")
-}
+
 object Game{
+    private val player = Player("Madrigal")
+    private var currentRoom: = TownSquare()
+
     init{
         println("歡迎，冒險者")
+        player.castFireball()
     }
     fun play(){
         while (true){
 
         }
+    }
+    private  fun  printPlayerStatus(player: Player){
+        println("光環顏色:${player.auraColor()}" + "     走運嗎?${if (player.isBlessed) "是的" else "否，他很背"}")
+        println("${player.name} ${player.formatHealthStatus()}")
     }
 }

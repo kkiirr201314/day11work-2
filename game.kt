@@ -20,7 +20,7 @@ object Game{
 
             printPlayerStatus(player)
             print("> 輸入您的命令: ")
-            println("最後命令: ${readLine()}")
+            println(GameInput(readLine()).processCommand())
         }
     }
     private  fun  printPlayerStatus(player: Player){

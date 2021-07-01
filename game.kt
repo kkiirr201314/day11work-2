@@ -6,7 +6,7 @@ fun main() {
 }
 
 object Game{
-    val player = Player("Oliver")
+    val player = Player("Madrigal")
     var currentRoom: room = TownSquare()
 
     private var worldMap= listOf(
@@ -16,7 +16,7 @@ object Game{
 
     init {
         player.castFireball()
-        println("～～～歡迎您，冒險者～～～")
+        println("歡迎您，冒險者。")
     }
     fun play(){
         while (true){
@@ -24,13 +24,12 @@ object Game{
             println(currentRoom.load())
             printPlayerStatus(player)
 
-            print("＞＞＞請輸入您的指令：")
+            print(">請輸入您的指令:")
 
             println(GameInput(readLine()).processCommand())
             if ( readLine() == "quit" || readLine()== "exit" ){
                 break
             }
-            println("--------------------------------------------")
         }
     }
     private fun printPlayerStatus(player:Player) {
@@ -49,11 +48,12 @@ object Game{
         fun processCommand() = when (command.toLowerCase()) {
             "move" -> move(argument)
             "map" -> printMap(player)
+            "ring" -> ringBell("Gwong~~")
             "quit" -> quit(player)
             "exit" -> quit(player)
             else -> commandNotFound()
         }
-        private fun commandNotFound() = "我不確定您要做什麼！！！"
+        private fun commandNotFound() = "我不確定您要做什麼！"
     }
     //在這加入move函數
     private fun move(directionInput: String)=
@@ -66,16 +66,16 @@ object Game{
             val newRoom = worldMap[newPosition.y] [newPosition.x]
             player.currentPosition = newPosition
             currentRoom = newRoom
-            "好的，您向 $direction 移到 ${newRoom.name}.\n${newRoom.load()}"
+            "OK, you move $direction to the ${newRoom.name}.\n${newRoom.load()}"
         } catch (e: Exception)
         {
-            "無效方向： $directionInput."
+            "Invalid direction: $directionInput."
         }
 
     //在這加入quit函數
-    private fun quit(player: Player) = "～～～　再見，${player.name}，歡迎再來玩　～～～ "
+    private fun quit(player: Player) = "～　再見， ${player.name} ，歡迎再來玩　～ "
 
-    //printMap
+    //在這加入printMap
     private fun printMap(player: Player){
         val x :Int = player.currentPosition.x
         val y :Int = player.currentPosition.y
@@ -93,4 +93,6 @@ object Game{
             println()
         }
     }
+    //加入ringBell()
+    public fun ringBell( bellSound: String) = "鐘樓響起鐘聲宣告您的到來。 $bellSound"
 }

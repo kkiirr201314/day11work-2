@@ -11,6 +11,7 @@ class Player (_name:String,
         }
 
     val hometown by lazy { selectHometown() }
+    var currentPosition = Coordinate(0, 0)
 
     init{
         require(healthPoints >0 ,{"健康指數須大於0。"})

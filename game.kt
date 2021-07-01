@@ -26,5 +26,7 @@ private  fun  printPlayerStatus(player: Player){
     println("${player.name} ${player.formatHealthStatus()}")
 }
 object Game{
-
+    init{
+        println("歡迎，冒險者")
+    }
 }

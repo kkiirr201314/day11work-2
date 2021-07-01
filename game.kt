@@ -1,4 +1,5 @@
 import java.lang.IllegalArgumentException
+import java.lang.IllegalStateException
 
 fun main() {
 
@@ -41,4 +42,19 @@ object Game{
         }
         private fun commandNotFound() = "我不太確定你想做什麼!"
     }
+    private  fun move(directionInput: String) =
+    try{
+        val direction = Direction.valueOf(directionInput.toUpperCase())
+        val newPosition = direction.updateCoordinate(player.currentPosition)
+        if (!newPosition.isInBounds){
+            throw IllegalStateException("$direction is out of bounds.")
+        }
+        val newRoom = worldMap[newPosition.y][newPosition.x]
+        player.currentPosition = newPosition
+        currentRoom = newRoom
+        "Ok, you move $direction to the ${newRoom.name}.\n${newRoom.load()}"
+    }catch (e:Exception){
+        "Invalid direction: $directionInput."
+    }
+
 }
